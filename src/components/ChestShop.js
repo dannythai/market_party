@@ -1,9 +1,12 @@
-import React, { Fragment } from "react";
+import React from "react";
 import styled from "styled-components";
 import ChestCard from "./ChestCard";
+import Button from "./Button";
 
 const StyledContainer = styled.div`
-  margin-top: 1rem;
+  margin-top: 8px;
+  grid-column: 1;
+  grid-row: 1 / 3;
 `;
 
 const StyledChestShop = styled.div`
@@ -16,20 +19,40 @@ const StyledChestShop = styled.div`
   padding: 1rem;
 `;
 
-const StyledHeadline = styled.div`
+export const StyledHeadline = styled.div`
   color: #3f4656;
   font-weight: 700;
   font-size: 18px;
-  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
 `;
 
 const ChestShop = props => {
+  const mascotToSetter = {
+    mousey: props.addMouseyPin,
+    wolf: props.addWolfPin,
+    bizarro: props.addBizarroPin,
+    flixy: props.addFlixyPin
+  };
   return (
     <StyledContainer>
-      <StyledHeadline>Chest Shop</StyledHeadline>
+      <StyledHeadline>
+        <span>Chest Shop</span>
+        <Button onClick={props.refreshChests}>Refresh (2)</Button>
+      </StyledHeadline>
+
       <StyledChestShop>
         {props.chests.map(chest => (
-          <ChestCard chest={chest} />
+          <ChestCard
+            gold={props.gold}
+            setGold={props.setGold}
+            addPin={mascotToSetter[chest.mascot]}
+            key={chest.id}
+            chest={chest}
+          />
         ))}
       </StyledChestShop>
     </StyledContainer>

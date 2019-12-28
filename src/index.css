@@ -42,7 +42,6 @@ sub,
 sup,
 tt,
 var,
-b,
 u,
 i,
 center,
@@ -131,4 +130,23 @@ table {
 #root {
   background: #f5f9ff;
   font-family: "Encode Sans";
+}
+
+.pin-transition-enter {
+  opacity: 0;
+}
+.pin-transition-enter-active {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+.pin-transition-exit {
+  position: absolute;
+  bottom: 37px !important;
+  opacity: 1;
+}
+.pin-transition-exit-active {
+  position: absolute;
+  bottom: 87px !important;
+  opacity: 1;
+  transition: opacity 200ms, bottom 1500ms ease-out;
 }

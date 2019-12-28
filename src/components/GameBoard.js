@@ -4,7 +4,7 @@ import MascotTrack from "./MascotTrack";
 
 const StyledGameBoard = styled.form`
   grid-column: 2;
-  grid-row: 1 / 4;
+  grid-row: 2 / 4;
 
   display: flex;
   flex-direction: column;
@@ -12,34 +12,39 @@ const StyledGameBoard = styled.form`
   align-items: center;
 `;
 
-const StyledRoundIndicator = styled.div``;
-const StyledRoundLabel = styled.div`
-  padding-right: 1rem;
-`;
-
-const GameBoard = () => {
-  const [round, setRound] = useState(0);
-  const roll = e => {
-    e.preventDefault();
-    setRound(round + 1);
-    console.log("roll is ", Math.random());
-  };
-
-  const generateSpaces = () => {
-    const space = Math.round(Math.random() * 50);
-    return space;
-  };
-
+const GameBoard = props => {
+  const {
+    mouseyLocation,
+    wolfLocation,
+    bizarroLocation,
+    flixyLocation
+  } = props;
   return (
-    <StyledGameBoard onSubmit={roll}>
-      <StyledRoundIndicator>
-        <StyledRoundLabel>{`Round: ${round}`}</StyledRoundLabel>
-        <button type="submit">Roll</button>
-      </StyledRoundIndicator>
-      <MascotTrack color="#f8b195" spaces={generateSpaces()} />
-      <MascotTrack color="#f67280" spaces={generateSpaces()} />
-      <MascotTrack color="#c06c84" spaces={generateSpaces()} />
-      <MascotTrack color="#ffd369" spaces={generateSpaces()} />
+    <StyledGameBoard>
+      <MascotTrack
+        mascot="mousey"
+        pins={props.mouseyPins}
+        spaces={mouseyLocation}
+        mascotLocationHistory={props.locationHistory.mousey}
+      />
+      <MascotTrack
+        mascot="bizarro"
+        pins={props.bizarroPins}
+        spaces={bizarroLocation}
+        mascotLocationHistory={props.locationHistory.bizarro}
+      />
+      <MascotTrack
+        mascot="wolf"
+        pins={props.wolfPins}
+        spaces={wolfLocation}
+        mascotLocationHistory={props.locationHistory.wolf}
+      />
+      <MascotTrack
+        mascot="flixy"
+        pins={props.flixyPins}
+        spaces={flixyLocation}
+        mascotLocationHistory={props.locationHistory.flixy}
+      />
     </StyledGameBoard>
   );
 };
