@@ -96,7 +96,7 @@ const MascotTrack = props => {
       <Pin color={mascot[props.mascot]} spaces={props.spaces} />
       <StyledMascotTrack />
       <StyledMascotLocationText
-        hide={!props.mascotLocationHistory.new}
+        hide={props.mascotLocationHistory.new === undefined}
       >{`${props.mascot} went from ${props.mascotLocationHistory.old} to ${props.mascotLocationHistory.new}`}</StyledMascotLocationText>
     </StyledTrackWrapper>
   );

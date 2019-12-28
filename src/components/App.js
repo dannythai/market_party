@@ -17,6 +17,12 @@ const AppWrapper = styled.div`
 `;
 
 const BASE_GOLD_INCOME = 5;
+const initialLocationHistory = {
+  mousey: { old: 0 },
+  wolf: { old: 0 },
+  bizarro: { old: 0 },
+  flixy: { old: 0 }
+};
 
 const App = () => {
   const chestHelper = new Chest();
@@ -38,12 +44,9 @@ const App = () => {
   const [flixyLocation, setFlixyLocation] = useState(0);
   const [flixyPins, setFlixyPins] = useState([]);
 
-  const [locationHistory, setLocationHistory] = useState({
-    mousey: { old: 0 },
-    wolf: { old: 0 },
-    bizarro: { old: 0 },
-    flixy: { old: 0 }
-  });
+  const [locationHistory, setLocationHistory] = useState(
+    initialLocationHistory
+  );
 
   useEffect(() => {
     window.addEventListener("keypress", e => {
@@ -72,6 +75,7 @@ const App = () => {
     setWolfPins([]);
     setBizarroPins([]);
     setFlixyPins([]);
+    setLocationHistory(initialLocationHistory);
   };
 
   const refreshChests = () => {
@@ -90,7 +94,6 @@ const App = () => {
   };
 
   const roll = e => {
-    e.preventDefault();
     setRound(round + 1);
     setGold(gold + BASE_GOLD_INCOME);
     setChests(chestHelper.generate());
@@ -98,6 +101,7 @@ const App = () => {
     const newWolfLocation = generateSpaces();
     const newBizarroLocation = generateSpaces();
     const newFlixyLocation = generateSpaces();
+
     setMouseyLocation(newMouseyLocation);
     setWolfLocation(newWolfLocation);
     setBizarroLocation(newBizarroLocation);

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import MascotTrack from "./MascotTrack";
 
-const StyledGameBoard = styled.form`
+const StyledGameBoard = styled.div`
   grid-column: 2;
   grid-row: 2 / 4;
 

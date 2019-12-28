@@ -39,8 +39,12 @@ const Inventory = props => {
   return (
     <StyledInventory>
       <StyledRoundInfo>
-        Press ENTER or click &nbsp;
-        <Button onClick={props.roll}>Roll</Button>
+        Click &nbsp;
+        <Button onClick={props.roll}>
+          {props.round === 0 ? "Play" : "Roll"}
+        </Button>
+        {props.round === 0 && props.round !== 9 ? " to begin" : " to advance"}
+        {props.round === 9 ? " one last time!" : ""}
       </StyledRoundInfo>
       <StyledCounterContainer>
         <StyledCounter>
