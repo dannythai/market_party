@@ -5,7 +5,12 @@ import GameBoard from "./GameBoard";
 import MascotDetails from "./MascotDetails";
 import Inventory from "./Inventory";
 import Chest from "../util/chest";
-import clamp from "../util/numbers";
+import {
+  getMouseyLocation,
+  getWolfLocation,
+  getFlixyLocation,
+  getBizarroLocation
+} from "../util/mascot";
 
 const AppWrapper = styled.div`
   height: 100vh;
@@ -87,21 +92,14 @@ const App = () => {
     setChests(chestHelper.generate());
   };
 
-  const generateSpaces = () => {
-    const direction = Math.random() < 0.5 ? -1 : 1;
-    const space = clamp(Math.round(Math.random() * 50), 0, 25);
-    return direction * space;
-  };
-
   const roll = e => {
     setRound(round + 1);
     setGold(gold + BASE_GOLD_INCOME);
     setChests(chestHelper.generate());
-    const newMouseyLocation = generateSpaces();
-    const newWolfLocation = generateSpaces();
-    const newBizarroLocation = generateSpaces();
-    const newFlixyLocation = generateSpaces();
-
+    const newMouseyLocation = getMouseyLocation(mouseyLocation);
+    const newWolfLocation = getWolfLocation(wolfLocation);
+    const newFlixyLocation = getFlixyLocation(bizarroLocation);
+    const newBizarroLocation = getBizarroLocation(flixyLocation);
     setMouseyLocation(newMouseyLocation);
     setWolfLocation(newWolfLocation);
     setBizarroLocation(newBizarroLocation);

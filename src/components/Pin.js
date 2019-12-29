@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState } from "react";
 import styled from "styled-components";
 import ChestIcon from "../assets/images/treasure.svg";
 import TrophyIcon from "../assets/images/trophy.svg";

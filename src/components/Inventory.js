@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import CoinIcon from "../assets/images/coins.svg";
 import TrophyIcon from "../assets/images/trophy.svg";

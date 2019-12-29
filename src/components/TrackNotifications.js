@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CSSTransition } from "react-transition-group";
 import CoinsIcon from "../assets/images/coins.svg";
 import TrophyIcon from "../assets/images/trophy.svg";
